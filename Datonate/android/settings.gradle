@@ -1,0 +1,3 @@
+rootProject.name = 'Datonate'
+
+include ':app'
