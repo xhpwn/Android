@@ -1,8 +1,14 @@
-// Importing libraries
 import React, { Component } from 'react';
-import { Text, View, TextInput, Image } from 'react-native';
-import Button from 'react-native-button';
-
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Image,
+  Button,
+  TouchableOpacity
+} from 'react-native';
 // Creating component
 class PasswordReset extends Component {
   constructor(props) {
@@ -17,73 +23,64 @@ class PasswordReset extends Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation;
-    const { textStyle, viewStyle, bodytextStyle, textbar, buttonStyle, buttonStyle2, backgroundImage } = styles;
 
     return (
-      <Image source={require('../images/background.jpg')} style={backgroundImage}>
-      <View style={viewStyle}>
-        <Text style={textStyle}>Datonate</Text>
-        <Text style={bodytextStyle}>Password Reset</Text>
-        <TextInput placeholder='Email' style={textbar} onChangeText={(email) => this.setState({email})}/>
-        <Button style={buttonStyle} onPress={this._userReset}> Reset </Button>
-        <Button style={buttonStyle2} onPress={() => navigate('Login')}> Back </Button>
+      <View style={styles.container}>
+      <Image
+      style={styles.logo}
+      source={require('../images/logo.png')}
+      />
+        <TextInput style = {styles.input}
+          placeholder = "Email"
+          placeholderTextColor = 'white'
+          onChangeText = {(email) => this.setState({email})}
+          value={this.state.text}
+        />
+        <TouchableOpacity style={styles.inputButton}
+          onPress={this._userReset}
+        >
+        <Text style={styles.inputButtonText}>
+          Reset Password
+        </Text>
+        </TouchableOpacity>
       </View>
-      </Image>
     );
   }
 }
 
-const styles = {
-  viewStyle: {
-    alignItems: 'center',
-    height: 700,
-    paddingTop: 50,
-    elevation: 10,
-    position: 'relative'
-  },
-  textStyle: {
-    fontSize: 50,
-    color: '#ffffff'
-  },
-  bodytextStyle: {
-    fontSize: 30,
-    color: '#f5f5f2',
-    paddingTop: 40,
-    paddingBottom: 50
-  },
-  textbar: {
-    height: 50,
-    borderColor: 'white',
-    color: 'white',
-    borderWidth: 0,
-    paddingTop: 20,
-    width: 200,
-  },
-  buttonStyle: {
-    fontSize: 20,
-    color: 'black',
-    borderWidth: 2,
-    borderColor: 'white',
-    backgroundColor: 'white',
-    width: 100,
-    marginTop: 60,
-  },
-  buttonStyle2: {
-    fontSize: 20,
-    color: 'black',
-    borderWidth: 2,
-    borderColor: 'white',
-    backgroundColor: 'white',
-    width: 100,
-    marginTop: 20,
-  },
-  backgroundImage: {
+const styles = StyleSheet.create({
+  container: {
     flex: 1,
-    alignSelf: 'stretch',
-    width: null,
+    justifyContent: 'center',
+    backgroundColor: '#263238',
+    alignItems: 'center'
+  },
+  input: {
+    paddingLeft: '6%',
+    width: '80%',
+    color: 'white',
+    backgroundColor: '#37474F',
+    marginBottom: 10,
+    fontSize: 15
+  },
+  logo: {
+    resizeMode: 'contain',
+    height: '25%',
+    marginBottom:'10%'
+  },
+  inputButton: {
+    marginTop: 10,
+    padding:10,
+    backgroundColor: '#0091EA',
+    width: '80%',
+  },
+  inputButtonText: {
+    color: 'white',
+    fontSize: 20,
+    textAlign: 'center',
+    fontWeight: '800'
   }
-};
+});
 
 // Exporting Component
 export default PasswordReset;

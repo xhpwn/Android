@@ -1,88 +1,99 @@
 import React, { Component } from 'react';
-import { StyleSheet, TextInput, View, Text, Image } from 'react-native';
-import Buttons from './Buttons'
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Image,
+  Button,
+  TouchableOpacity
+} from 'react-native';
 
 class Registration extends Component {
+  constructor(props) {
+  super(props);
+  this.state = {
+    fName: '',
+    lName: '',
+    email: '',
+    password: ''
+  }
+}
   render(){
-    const { navigate } = this.props.navigation;
-    const {page, inputBox, container, header, buttonStyle, headerContainer} = styles;
   return (
-  <View style={page}>
-
-  <View style={headerContainer}>
-  <Text style={header}> Datonate </Text>
-  </View>
-  <View style={container}>
-  <TextInput
-    placeholder="First Name"
-    returnKeyType = "next"
-    autoCorrect =  {false}
-    style = {inputBox}
-  />
-  <TextInput
-    placeholder="Last Name"
-    returnKeyType = "next"
-    autoCorrect =  {false}
-    style = {inputBox}
-  />
-  <TextInput
-    placeholder="E-mail"
-    returnKeyType = "next"
-    keyboardType = "email-address"
-    autoCapitalize = "none"
-    autoCorrect =  {false}
-    style = {inputBox}
-  />
-  <TextInput
-    placeholder="Password"
-    returnKeyType = "next"
-    secureTextEntry
-    autoCapitalize = "none"
-    autoCorrect =  {false}
-    style = {inputBox}
-  />
-  <View style = {buttonStyle}>
-  <Buttons
-    title="Register"
-  />
-  </View>
-  </View>
-  </View>
+    <View style={styles.container}>
+    <Image
+    style={styles.logo}
+    source={require('../images/logo.png')}
+    />
+      <TextInput style = {styles.input}
+        placeholder = "First Name"
+        placeholderTextColor = 'white'
+        onChangeText = {(fName) => this.setState({fName})}
+        value={this.state.text}
+      />
+      <TextInput style = {styles.input}
+        placeholder = "Last Name"
+        placeholderTextColor = 'white'
+        onChangeText = {(lName) => this.setState({lName})}
+        value={this.state.text}
+      />
+      <TextInput style = {styles.input}
+        placeholder = "Email"
+        placeholderTextColor = 'white'
+        onChangeText = {(email) => this.setState({email})}
+        value={this.state.text}
+      />
+      <TextInput style = {styles.input}
+        secureTextEntry = {true}
+        placeholder = "Password"
+        placeholderTextColor = 'white'
+        onChangeText = {(password) => this.setState({password})}
+        value={this.state.text}
+      />
+      <TouchableOpacity style={styles.inputButton}
+      >
+      <Text style={styles.inputButtonText}>
+        Register
+      </Text>
+      </TouchableOpacity>
+    </View>
   );
   }
 }
 
 const styles = StyleSheet.create({
-  page: {
-    backgroundColor: '#99d8f7',
-    flex: 1,
-  },
   container: {
-    marginTop: 50,
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#263238',
+    alignItems: 'center'
   },
-  inputBox: {
-    height: 40,
-    marginLeft: 40,
-    marginRight: 40,
-    //backgroundColor: '#ffffff',
-    color: '#000000',
+  input: {
+    paddingLeft: '6%',
+    width: '80%',
+    color: 'white',
+    backgroundColor: '#37474F',
+    marginBottom: 10,
+    fontSize: 15
   },
-  header: {
-    alignItems: 'center',
-    fontSize: 40,
-    color: '#000000',
+  logo: {
+    resizeMode: 'contain',
+    height: '25%',
+    marginBottom:'10%'
   },
-  buttonStyle: {
-    alignItems: 'center',
-    //marginLeft: 100,
-    //marginRight: 100,
-    marginTop: 20,
-    width: 350,
+  inputButton: {
+    marginTop: 10,
+    padding:10,
+    backgroundColor: '#0091EA',
+    width: '80%',
   },
-  headerContainer: {
-    alignItems: 'center',
-    marginTop: 50,
+  inputButtonText: {
+    color: 'white',
+    fontSize: 20,
+    textAlign: 'center',
+    fontWeight: '800'
   }
 });
-
 export default Registration;
