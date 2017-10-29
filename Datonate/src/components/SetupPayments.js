@@ -1,10 +1,10 @@
 // Importing libraries
 import React, { Component } from 'react';
-import { Text, ScrollView, TextInput, Image } from 'react-native';
+import { Text, View, TextInput, Image } from 'react-native';
 import Button from 'react-native-button';
 
 // Creating component
-class LoginPage extends Component {
+class SetupPayments extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,25 +38,16 @@ class LoginPage extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    const { textStyle, viewStyle, bodytextStyle, textbar, buttonStyle, buttonStyle2, backgroundImage } = styles;
+    const { textStyle, viewStyle, bodytextStyle, textbar, textbar2, buttonStyle, buttonStyle2, backgroundImage } = styles;
 
     return (
-      <Image source={require('../images/background.jpg')} style={backgroundImage}>
-      <ScrollView contentContainerStyle={viewStyle}>
-        <Text style={textStyle}>Datonate</Text>
-        <Text style={bodytextStyle}>Login</Text>
-        <TextInput placeholder='Email' style={textbar} onChangeText={(email) => this.setState({email})}/>
-        <TextInput placeholder='Password' style={textbar} onChangeText={(password) => this.setState({password})}/>
-        <Button style={buttonStyle} onPress={this._userLogin}> Go </Button>
-        <Button style={buttonStyle2} onPress={() => navigate('Registration')}> Register </Button>
-<<<<<<< HEAD
-        <Button style={buttonStyle2} onPress={() => navigate('Landing')}> Reset Password </Button>
+      <View style={viewStyle}>
+        <Text style={textStyle}>Setup Payments</Text>
+        <Text style={bodytextStyle}></Text>
+        <TextInput placeholder='Card number' style={textbar} onChangeText={(email) => this.setState({email})}/>
+        <TextInput placeholder='CVV' style={textbar2} onChangeText={(password) => this.setState({password})}/>
+        <Button style={buttonStyle} onPress={this._userLogin}>Save</Button>
       </View>
-=======
-        <Button style={buttonStyle2} onPress={() => navigate('Reset')}> Reset Password </Button>
-      </ScrollView>
->>>>>>> 01373545786e0a52e172cab66221587799b0b987
-      </Image>
     );
   }
 }
@@ -65,13 +56,13 @@ const styles = {
   viewStyle: {
     alignItems: 'center',
     height: 700,
-    paddingTop: 50,
+    paddingTop: 30,
     elevation: 10,
     position: 'relative'
   },
   textStyle: {
-    fontSize: 50,
-    color: '#ffffff'
+    fontSize: 30,
+    color: 'black'
   },
   bodytextStyle: {
     fontSize: 30,
@@ -84,8 +75,15 @@ const styles = {
     borderColor: 'white',
     color: 'white',
     borderWidth: 0,
-    paddingTop: 20,
     width: 200,
+  },
+  textbar2: {
+    height: 50,
+    borderColor: 'white',
+    color: 'white',
+    borderWidth: 0,
+    width: 50,
+    marginLeft: 100,
   },
   buttonStyle: {
     fontSize: 20,
@@ -94,7 +92,7 @@ const styles = {
     borderColor: 'white',
     backgroundColor: 'white',
     width: 100,
-    marginTop: 40,
+    marginTop: 60,
   },
   buttonStyle2: {
     fontSize: 20,
@@ -113,4 +111,4 @@ const styles = {
 };
 
 // Exporting Component
-export default LoginPage;
+export default SetupPayments;

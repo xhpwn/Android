@@ -6,11 +6,13 @@ import { View, Text, DrawerLayoutAndroid } from 'react-native';
 class Landing extends Component {
 
   render() {
+    const { navigate } = this.props.navigation;
     var navigationView = (
    <View style={{flex: 1, backgroundColor: '#fff'}}>
-     <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>A New Drawer</Text>
-     <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>The Drawer Strikes Back</Text>
-     <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>Return of the Drawer</Text>
+     <Text style={{margin: 10, fontSize: 20, textAlign: 'left'}}>View Experiments</Text>
+       <Text style={{margin: 10, fontSize: 20, textAlign: 'left'}}>Request Payments</Text>
+     <Text style={{margin: 10, fontSize: 20, textAlign: 'left'}} onPress={() => navigate('Payments')}>Setup Payments</Text>
+     <Text style={{margin: 10, fontSize: 20, textAlign: 'left'}}>Log out</Text>
    </View>
  );
  return (
